@@ -1,42 +1,79 @@
-#N canvas 2108 67 699 464 12;
-#X obj 10 124 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#N canvas 2174 78 800 740 12;
+#X obj 19 220 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X floatatom 25 187 5 0 0 0 - - - 0;
-#X obj 42 130 r settings;
-#X floatatom 107 39 5 0 0 0 - - - 0;
-#N canvas 840 103 1212 760 helios-settings 1;
-#X obj 18 291 s settings;
-#X floatatom 49 163 5 0 0 0 - - - 0;
-#X text 101 163 <---------;
-#X floatatom 38 90 5 0 0 0 - - - 0;
-#X text 101 90 <---------;
-#X floatatom 21 21 5 0 0 0 - - - 0;
-#X text 101 21 <---------;
-#X msg 21 49 maxangle \$1;
-#X text 172 21 set the max angle for a corner before inserting points
-- default 15 degrees;
-#X msg 38 118 subdivide \$1;
-#X text 172 90 set the subdivision length for straight lines - default
-15;
-#X msg 49 191 blanknum \$1;
-#X text 172 163 set the number of dwell points to insert at corners
-- default 8;
-#X msg 68 249 intensity \$1;
-#X floatatom 66 221 5 0 0 0 - - - 0;
-#X connect 1 0 11 0;
-#X connect 3 0 9 0;
-#X connect 5 0 7 0;
+#X floatatom 34 283 5 0 0 0 - - - 0;
+#X obj 51 226 r settings;
+#X floatatom 115 54 5 0 0 0 - - - 0;
+#N canvas 2615 710 1035 1283 helios-settings 1;
+#X obj 7 578 s settings;
+#X floatatom 36 309 5 0 0 0 - - - 0;
+#X text 112 311 <---------;
+#X text 113 246 <---------;
+#X floatatom 32 190 5 0 0 0 - - - 0;
+#X text 112 190 <---------;
+#X msg 32 218 maxangle \$1;
+#X msg 32 276 subdivide \$1;
+#X msg 36 337 blanknum \$1;
+#X msg 22 42 intensity \$1;
+#X floatatom 22 17 5 0 0 0 - - - 0;
+#X msg 28 160 drawmode \$1;
+#X obj 28 141 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X floatatom 36 389 5 0 0 0 - - - 0;
+#X text 110 388 <---------;
+#X msg 36 417 maxstatuspoll \$1;
+#X floatatom 32 249 5 0 0 0 - - - 0;
+#X text 188 143 0=normal \, 1=raw mode - maxangle \, subdivide \, blanknum
+are ignored - default 0, f 43;
+#X text 108 141 <---------;
+#X obj 35 454 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X text 115 455 <---------;
+#X msg 35 474 startimmediately \$1;
+#X text 195 457 TODO;
+#X obj 26 71 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
+0 1;
+#X text 105 73 <---------;
+#X obj 35 503 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X text 115 508 <---------;
+#X text 195 510 TODO;
+#X msg 25 92 singlemode \$1;
+#X msg 35 527 dontblock \$1;
+#X text 97 17 <---------;
+#X text 177 19 Scale RGB values. Range 0 - 255;
+#X text 185 75 Dont repeat frame if a new frame has not been received
+, f 42;
+#X text 183 190 Set the max angle for a corner before inserting points
+- default 15 degrees, f 44;
+#X text 184 246 Set the subdivision length for straight lines - default
+15, f 43;
+#X text 183 311 Set the number of dwell points to insert at corners
+- default 8, f 44;
+#X text 181 388 Set the maximum number of times to poll the DAC ready
+status before sending the frame - default 512, f 43;
+#X connect 1 0 8 0;
+#X connect 4 0 6 0;
+#X connect 6 0 0 0;
 #X connect 7 0 0 0;
+#X connect 8 0 0 0;
 #X connect 9 0 0 0;
+#X connect 10 0 9 0;
 #X connect 11 0 0 0;
-#X connect 13 0 0 0;
-#X connect 14 0 13 0;
-#X restore 177 124 pd helios-settings;
-#X obj 25 91 array get heliosdata;
-#X obj 25 160 helios 30000;
-#X obj 30 49 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X connect 12 0 11 0;
+#X connect 13 0 15 0;
+#X connect 15 0 0 0;
+#X connect 16 0 7 0;
+#X connect 19 0 21 0;
+#X connect 21 0 0 0;
+#X connect 23 0 28 0;
+#X connect 25 0 29 0;
+#X connect 28 0 0 0;
+#X connect 29 0 0 0;
+#X restore 228 25 pd helios-settings;
+#X obj 66 81 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#N canvas 2828 42 652 1002 oscbuffer 1;
+#N canvas 2995 42 652 1002 oscbuffer 1;
 #X obj 23 45 oscparse;
 #X obj 87 249 list length;
 #X obj 55 102 list trim;
@@ -47,34 +84,46 @@
 #X obj 23 17 netreceive -u -b 12000;
 #X obj 87 301 t f f, f 6;
 #X obj 55 158 t l l;
-#X obj 24 404 outlet;
+#X obj 23 434 outlet;
 #X obj 87 362 outlet;
 #X text 138 362 num points;
-#X text 75 402 bang;
 #X obj 55 221 array set heliosdata;
 #X obj 126 332 array size heliosdata;
 #X obj 13 467 array define -yrange -2048 2047 heliosdata;
 #X obj 87 332 / 5;
 #X obj 55 130 route xyrgb pps;
+#X obj 23 402 array get heliosdata;
 #X connect 0 0 6 0;
 #X connect 1 0 3 0;
-#X connect 2 0 18 0;
+#X connect 2 0 17 0;
 #X connect 3 0 8 0;
 #X connect 4 0 5 0;
-#X connect 6 0 10 0;
+#X connect 6 0 18 0;
 #X connect 6 1 2 0;
 #X connect 7 0 0 0;
-#X connect 8 0 17 0;
-#X connect 8 1 15 0;
-#X connect 9 0 14 0;
+#X connect 8 0 16 0;
+#X connect 8 1 14 0;
+#X connect 9 0 13 0;
 #X connect 9 1 1 0;
-#X connect 17 0 11 0;
-#X connect 18 0 9 0;
-#X connect 18 1 4 0;
-#X restore 25 10 pd oscbuffer;
-#X connect 0 0 6 0;
-#X connect 2 0 6 0;
-#X connect 5 0 6 0;
-#X connect 6 0 1 0;
-#X connect 8 1 3 0;
-#X coords 0 116 0.5 115.5 85 60 0;
+#X connect 16 0 11 0;
+#X connect 17 0 9 0;
+#X connect 17 1 4 0;
+#X connect 18 0 10 0;
+#X restore 33 25 pd oscbuffer;
+#X msg 60 177 0 0 255 255 255 10 0 255 255 255;
+#X obj 34 54 t l b;
+#X obj 34 256 helios 30000;
+#X obj 35 139 spigot;
+#X obj 72 113 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X connect 0 0 9 0;
+#X connect 2 0 9 0;
+#X connect 6 0 8 0;
+#X connect 6 1 3 0;
+#X connect 7 0 9 0;
+#X connect 8 0 10 0;
+#X connect 8 1 5 0;
+#X connect 9 0 1 0;
+#X connect 10 0 9 0;
+#X connect 11 0 10 1;
+#X coords 0 185 0.5 184.5 85 60 0;
