@@ -1,163 +1,225 @@
-#N canvas 1009 323 468 1046 12;
-#N canvas 1706 387 1924 1539 UI 1;
-#X text 605 176 0=normal \, 1=raw mode - maxangle \, subdivide \, blanknum
+#N canvas 609 278 661 1171 12;
+#N canvas 33 334 1924 1539 UI 0;
+#X text 655 178 0=normal \, 1=raw mode - maxangle \, subdivide \, blanknum
 are ignored - default 0, f 43;
-#X text 604 367 Dont repeat frame if a new frame has not been received
+#X text 655 437 Dont repeat frame if a new frame has not been received
 , f 42;
-#X text 604 217 Set the max angle for a corner before inserting points
+#X text 654 219 Set the max angle for a corner before inserting points
 - default 15 degrees, f 44;
-#X text 603 256 Set the subdivision length for straight lines - default
+#X text 653 258 Set the subdivision length for straight lines - default
 15, f 43;
-#X text 605 300 Set the number of dwell points to insert at corners
+#X text 655 302 Set the number of dwell points to insert at corners
 - default 8, f 44;
-#X text 602 407 Set the maximum number of times to poll the DAC ready
+#X text 652 568 Set the maximum number of times to poll the DAC ready
 status before sending the frame - default 512, f 43;
-#X text 603 529 Don't let WriteFrame() block execution while waiting
+#X text 653 531 Don't let WriteFrame() block execution while waiting
 for the transfer to finish, f 41;
-#X text 603 472 Start output immediately \, instead of waiting for
+#X text 653 474 Start output immediately \, instead of waiting for
 current frame (if there is one) to finish playing, f 41;
-#X floatatom 119 52 7 0 0 0 - - - 16;
-#X msg 368 140 pps \$1;
-#X text 605 75 Scale RGB values. Range 0 - 255 \, default=255;
-#X text 606 36 Points per second. Range 10000 - 65535 \, default=20000
+#X floatatom 180 54 7 0 0 0 - - - 16;
+#X msg 504 162 pps \$1;
+#X text 655 77 Scale RGB values. Range 0 - 255 \, default=255;
+#X text 656 38 Points per second. Range 10000 - 65535 \, default=20000
 , f 43;
-#X obj 85 521 outlet;
-#X obj 85 494 r \$0-out;
-#X obj 368 163 s \$0-out;
-#X text 14 57 PPS;
-#X floatatom 119 85 7 0 0 0 - - - 16;
-#X obj 368 209 s \$0-out;
-#X text 14 90 Intensity;
-#X msg 368 186 intensity \$1;
-#X obj 363 309 s \$0-out;
-#X floatatom 119 204 7 0 0 0 - - - 16;
-#X obj 363 355 s \$0-out;
-#X floatatom 119 237 7 0 0 0 - - - 16;
-#X obj 363 401 s \$0-out;
-#X floatatom 119 270 7 0 0 0 - - - 16;
-#X obj 363 447 s \$0-out;
-#X obj 363 513 s \$0-out;
-#X obj 119 171 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 315 671 r \$0-out;
+#X obj 504 185 s \$0-out;
+#X floatatom 180 185 7 0 0 0 - - - 16;
+#X obj 504 231 s \$0-out;
+#X text 14 186 Intensity;
+#X msg 504 208 intensity \$1;
+#X obj 502 314 s \$0-out;
+#X floatatom 180 272 7 0 0 0 - - - 16;
+#X obj 502 360 s \$0-out;
+#X floatatom 180 305 7 0 0 0 - - - 16;
+#X obj 502 406 s \$0-out;
+#X floatatom 180 338 7 0 0 0 - - - 16;
+#X obj 502 452 s \$0-out;
+#X obj 502 518 s \$0-out;
+#X obj 180 239 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 363 286 drawmode \$1;
-#X text 14 209 Max angle;
-#X msg 363 332 maxangle \$1;
-#X text 14 242 Subdivide;
-#X msg 363 378 subdivide \$1;
-#X text 14 275 Dwell points;
-#X msg 363 424 blanknum \$1;
-#X text 14 176 Optimize;
-#X obj 363 260 expr 1 - $i1;
-#X text 14 328 Single mode;
-#X obj 119 323 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 502 291 drawmode \$1;
+#X text 14 272 Max angle;
+#X msg 502 337 maxangle \$1;
+#X text 14 305 Subdivide;
+#X msg 502 383 subdivide \$1;
+#X text 14 338 Dwell points;
+#X msg 502 429 blanknum \$1;
+#X text 14 239 Optimize;
+#X obj 502 265 expr 1 - $i1;
+#X text 14 391 Single mode;
+#X obj 180 391 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 363 490 singlemode \$1;
-#X obj 364 659 s \$0-out;
-#X obj 363 564 s \$0-out;
-#X obj 119 356 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 502 495 singlemode \$1;
+#X obj 503 664 s \$0-out;
+#X obj 502 569 s \$0-out;
+#X obj 180 424 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 363 610 s \$0-out;
-#X obj 119 389 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 502 615 s \$0-out;
+#X obj 180 457 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X text 14 427 Max poll;
-#X msg 364 636 maxstatuspoll \$1;
-#X text 14 361 Start Immed.;
-#X text 14 394 Don't block;
-#X msg 363 541 startimmediately \$1;
-#X msg 363 587 dontblock \$1;
-#X msg 238 57 20000;
-#X msg 240 88 255;
-#X msg 242 167 1;
-#X msg 242 207 15;
-#X msg 240 242 15;
-#X msg 242 278 8;
-#X msg 242 333 0;
-#X msg 241 369 0;
-#X msg 245 396 0;
-#X msg 244 420 512;
-#X floatatom 119 422 7 0 0 0 - - - 16;
-#X msg 637 687 0;
-#X obj 636 714 s kill;
-#X obj 638 581 key;
-#X obj 637 631 sel 27;
-#X obj 119 118 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 503 641 maxstatuspoll \$1;
+#X text 14 457 Don't block;
+#X msg 502 546 startimmediately \$1;
+#X msg 502 592 dontblock \$1;
+#X msg 423 60 20000;
+#X msg 425 91 255;
+#X msg 428 212 1;
+#X msg 428 252 15;
+#X msg 426 287 15;
+#X msg 428 323 8;
+#X msg 420 384 0;
+#X msg 419 420 0;
+#X msg 423 447 0;
+#X msg 422 471 512;
+#X floatatom 180 490 7 0 0 0 - - - 16;
+#X msg 117 678 0;
+#X obj 116 705 s kill;
+#X obj 118 572 key;
+#X obj 117 622 sel 27;
+#X obj 180 524 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 638 606 spigot;
-#X text 14 123 Kill switch;
-#X msg 240 122 1;
-#X obj 637 658 t b b, f 8;
-#X msg 690 689 0 0 0 0 0;
-#X text 603 102 Killswitch - Esc key centers the galvos \, turns off
+#X obj 118 597 spigot;
+#X msg 426 510 1;
+#X obj 117 649 t b b, f 8;
+#X msg 170 680 0 0 0 0 0;
+#X text 653 619 Killswitch - Esc key centers the galvos \, turns off
 the beam \, then disables the DAC.;
-#X obj 690 715 s \$0-out;
-#X obj 119 19 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 170 706 s \$0-out;
+#X obj 180 19 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X text 14 24 Enable DAC;
-#X msg 236 20 0;
-#X obj 366 113 s \$0-out;
-#X obj 335 55 t b b;
-#X msg 366 78 0 0 0 0 0;
-#X obj 334 22 loadbang;
-#X connect 8 0 9 0;
-#X connect 9 0 14 0;
-#X connect 13 0 12 0;
-#X connect 16 0 19 0;
-#X connect 19 0 17 0;
+#X text 14 20 Enable DAC;
+#X msg 421 23 0;
+#X obj 505 109 s \$0-out;
+#X obj 474 54 t b b;
+#X msg 505 83 0 0 0 0 0;
+#X obj 473 27 loadbang;
+#X msg 310 95 10, f 2;
+#X msg 335 95 12, f 2;
+#X msg 360 95 15, f 2;
+#X msg 310 117 20, f 2;
+#X msg 335 117 25, f 2;
+#X msg 360 117 30, f 2;
+#X msg 310 139 35, f 2;
+#X msg 335 139 40, f 2;
+#X msg 360 139 45, f 2;
+#X obj 180 88 bng 15 250 50 0 empty empty 10 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 215 88 bng 15 250 50 0 empty empty 12 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 250 88 bng 15 250 50 0 empty empty 15 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 180 105 bng 15 250 50 0 empty empty 20 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 215 105 bng 15 250 50 0 empty empty 25 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 250 105 bng 15 250 50 0 empty empty 30 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 180 122 bng 15 250 50 0 empty empty 35 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 215 122 bng 15 250 50 0 empty empty 40 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 250 122 bng 15 250 50 0 empty empty 45 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 180 139 bng 15 250 50 0 empty empty 50 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 215 139 bng 15 250 50 0 empty empty 55 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 250 139 bng 15 250 50 0 empty empty 60 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 311 161 50, f 2;
+#X msg 336 161 55, f 2;
+#X msg 361 161 60, f 2;
+#X obj 330 185 + 0;
+#X obj 505 139 * 1000;
+#X text 14 57 KPPS;
+#X text 14 524 ESC key killswitch;
+#X text 14 490 Max status poll;
+#X text 14 424 Start Immediately;
+#X obj 315 698 s helios-control;
+#X connect 8 0 102 0;
+#X connect 9 0 13 0;
+#X connect 12 0 107 0;
+#X connect 14 0 17 0;
+#X connect 17 0 15 0;
+#X connect 19 0 29 0;
 #X connect 21 0 31 0;
 #X connect 23 0 33 0;
-#X connect 25 0 35 0;
-#X connect 28 0 37 0;
+#X connect 26 0 35 0;
+#X connect 27 0 18 0;
 #X connect 29 0 20 0;
 #X connect 31 0 22 0;
 #X connect 33 0 24 0;
-#X connect 35 0 26 0;
-#X connect 37 0 29 0;
-#X connect 39 0 40 0;
-#X connect 40 0 27 0;
-#X connect 43 0 50 0;
-#X connect 45 0 51 0;
-#X connect 47 0 41 0;
-#X connect 50 0 42 0;
-#X connect 51 0 44 0;
-#X connect 52 0 8 0;
-#X connect 53 0 16 0;
-#X connect 54 0 28 0;
-#X connect 55 0 21 0;
-#X connect 56 0 23 0;
-#X connect 57 0 25 0;
-#X connect 58 0 39 0;
-#X connect 59 0 43 0;
-#X connect 60 0 45 0;
-#X connect 61 0 62 0;
-#X connect 62 0 47 0;
-#X connect 63 0 64 0;
-#X connect 65 0 68 0;
-#X connect 66 0 71 0;
-#X connect 67 0 68 1;
-#X connect 68 0 66 0;
-#X connect 70 0 67 0;
-#X connect 71 0 63 0;
-#X connect 71 1 72 0;
-#X connect 72 0 74 0;
-#X connect 75 0 78 0;
-#X connect 77 0 75 0;
-#X connect 79 0 52 0;
-#X connect 79 0 53 0;
-#X connect 79 0 54 0;
-#X connect 79 0 55 0;
-#X connect 79 0 56 0;
-#X connect 79 0 57 0;
-#X connect 79 0 58 0;
-#X connect 79 0 59 0;
-#X connect 79 0 60 0;
-#X connect 79 0 61 0;
-#X connect 79 0 70 0;
-#X connect 79 0 77 0;
-#X connect 79 1 80 0;
-#X connect 80 0 78 0;
-#X connect 81 0 79 0;
-#X coords 0 -1 1 1 200 460 2 0 0;
-#X restore 8 10 pd UI;
-#X obj 8 480 outlet;
-#X connect 0 0 1 0;
-#X coords 0 523 1 522 85 60 0;
+#X connect 35 0 27 0;
+#X connect 37 0 38 0;
+#X connect 38 0 25 0;
+#X connect 41 0 46 0;
+#X connect 43 0 47 0;
+#X connect 44 0 39 0;
+#X connect 46 0 40 0;
+#X connect 47 0 42 0;
+#X connect 48 0 8 0;
+#X connect 49 0 14 0;
+#X connect 50 0 26 0;
+#X connect 51 0 19 0;
+#X connect 52 0 21 0;
+#X connect 53 0 23 0;
+#X connect 54 0 37 0;
+#X connect 55 0 41 0;
+#X connect 56 0 43 0;
+#X connect 57 0 58 0;
+#X connect 58 0 44 0;
+#X connect 59 0 60 0;
+#X connect 61 0 64 0;
+#X connect 62 0 66 0;
+#X connect 63 0 64 1;
+#X connect 64 0 62 0;
+#X connect 65 0 63 0;
+#X connect 66 0 59 0;
+#X connect 66 1 67 0;
+#X connect 67 0 69 0;
+#X connect 70 0 73 0;
+#X connect 72 0 70 0;
+#X connect 74 0 48 0;
+#X connect 74 0 49 0;
+#X connect 74 0 50 0;
+#X connect 74 0 51 0;
+#X connect 74 0 52 0;
+#X connect 74 0 53 0;
+#X connect 74 0 54 0;
+#X connect 74 0 55 0;
+#X connect 74 0 56 0;
+#X connect 74 0 57 0;
+#X connect 74 0 65 0;
+#X connect 74 0 72 0;
+#X connect 74 1 75 0;
+#X connect 75 0 73 0;
+#X connect 76 0 74 0;
+#X connect 77 0 101 0;
+#X connect 78 0 101 0;
+#X connect 79 0 101 0;
+#X connect 80 0 101 0;
+#X connect 81 0 101 0;
+#X connect 82 0 101 0;
+#X connect 83 0 101 0;
+#X connect 84 0 101 0;
+#X connect 85 0 101 0;
+#X connect 86 0 77 0;
+#X connect 87 0 78 0;
+#X connect 88 0 79 0;
+#X connect 89 0 80 0;
+#X connect 90 0 81 0;
+#X connect 91 0 82 0;
+#X connect 92 0 83 0;
+#X connect 93 0 84 0;
+#X connect 94 0 85 0;
+#X connect 95 0 98 0;
+#X connect 96 0 99 0;
+#X connect 97 0 100 0;
+#X connect 98 0 101 0;
+#X connect 99 0 101 0;
+#X connect 100 0 101 0;
+#X connect 101 0 8 0;
+#X connect 102 0 9 0;
+#X coords 0 -1 1 1 300 560 2 0 0;
+#X restore 12 14 pd UI;
+#X coords 0 585.5 1 584.5 85 60 0;
