@@ -1,12 +1,12 @@
-#N canvas 90 117 352 524 12;
-#X obj 52 429 helios 30000;
-#X floatatom 51 303 5 0 0 0 - - - 0;
-#X obj 49 207 tgl 24 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#N canvas 2723 260 684 1057 12;
+#X obj 45 433 helios 30000;
+#X floatatom 44 307 5 0 0 0 - - - 0;
+#X obj 42 211 tgl 24 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 52 337 text get ildafile;
-#X obj 94 32 bng 24 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 45 341 text get ildafile;
+#X obj 88 36 bng 24 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#N canvas 2046 1162 334 345 frame-counter 0;
+#N canvas 2046 1162 498 473 frame-counter 1;
 #X obj 71 112 + 1;
 #X obj 14 112 float 0;
 #X obj 13 179 outlet;
@@ -32,9 +32,9 @@
 #X connect 12 0 13 1;
 #X connect 12 1 5 0;
 #X connect 13 0 2 0;
-#X restore 51 271 pd frame-counter;
+#X restore 44 275 pd frame-counter;
 #X f 32;
-#N canvas 0 0 833 661 work-in-progress 0;
+#N canvas 1787 545 833 661 work-in-progress 0;
 #N canvas 1861 98 887 913 modulate 0;
 #X obj 132 22 inlet;
 #X obj 246 22 inlet;
@@ -78,7 +78,7 @@
 #X connect 15 0 16 0;
 #X restore 82 173 pd modulate;
 #X f 17;
-#N canvas 1067 1111 920 922 xyrgb-demux 0;
+#N canvas 542 930 920 922 xyrgb-demux 0;
 #X obj 20 9 inlet;
 #X obj 21 102 float 0;
 #X obj 21 74 until;
@@ -166,7 +166,7 @@
 #X connect 42 3 28 0;
 #X connect 44 0 43 0;
 #X restore 82 120 pd xyrgb-demux;
-#N canvas 46 688 651 1289 xyrgb-mux 0;
+#N canvas 1168 259 651 1289 xyrgb-mux 0;
 #X obj 20 9 inlet;
 #X obj 80 200 + 1;
 #X obj 20 199 float 0;
@@ -240,7 +240,7 @@
 #X obj 205 91 / 5;
 #X text 246 116 points in frame;
 #X obj 207 143 change;
-#N canvas 3110 1014 544 1015 scale-xyrgb 0;
+#N canvas 2373 566 544 1015 scale-xyrgb 0;
 #X obj 16 10 inlet;
 #X obj 16 94 float 0;
 #X obj 16 66 until;
@@ -327,21 +327,21 @@
 #X connect 7 0 0 5;
 #X connect 9 0 8 1;
 #X connect 9 0 8 2;
-#X restore 164 488 pd work-in-progress;
-#X obj 51 244 metro 50;
-#X msg 47 138 XYRGB/Dancer.ild.xyrgb;
-#X obj 46 32 bng 24 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X restore 157 492 pd work-in-progress;
+#X obj 44 248 metro 50;
+#X msg 41 142 XYRGB/BEAMIN.ild.xyrgb;
+#X obj 40 36 bng 24 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#X floatatom 119 303 5 0 0 0 - - - 0;
-#X text 94 303 of;
-#X floatatom 191 32 5 0 0 0 - - - 0;
-#X obj 239 53 t b b;
-#X obj 239 32 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X floatatom 112 307 5 0 0 0 - - - 0;
+#X text 87 307 of;
+#X floatatom 185 36 5 0 0 0 - - - 0;
+#X obj 233 57 t b b;
+#X obj 233 36 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 142 32 bng 24 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 136 36 bng 24 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 46 109 t a b, f 28;
-#N canvas 1161 262 993 628 ilda-library 0;
+#X obj 40 113 t a b, f 28;
+#N canvas 1161 262 993 628 ilda-library 1;
 #X obj 183 278 text define ildafile;
 #X msg 267 247 clear;
 #X msg 183 246 read -c \$1;
@@ -355,7 +355,7 @@
 #X text 8 277 filename;
 #X text 97 277 num frames;
 #X msg 18 209 set \$1;
-#N canvas 2144 464 774 547 counter 0;
+#N canvas 1171 1009 774 547 counter 1;
 #X obj 80 146 + 1;
 #X obj 18 145 float 0;
 #X obj 78 234 outlet;
@@ -447,23 +447,23 @@
 #X connect 28 1 19 0;
 #X connect 28 2 21 0;
 #X connect 28 3 8 0;
-#X restore 46 81 pd ilda-library;
+#X restore 40 85 pd ilda-library;
 #X f 28;
-#X obj 75 368 helios-control;
-#X text 9 303 Frame;
-#X text 44 6 Prev;
-#X text 93 6 Next;
-#X text 141 6 Rand;
-#X text 187 6 Goto;
-#X text 235 6 Reset;
-#X obj 47 169 r kill;
-#X obj 75 403 r helios-control;
-#X text 12 210 Play;
-#X msg 105 193 1000 \$1;
-#X obj 104 216 /;
-#X floatatom 106 169 5 0 0 0 - - - 0;
-#X text 148 168 FPS;
-#X obj 52 454 helios-status;
+#X obj 68 372 helios-control;
+#X text 2 307 Frame;
+#X text 38 10 Prev;
+#X text 87 10 Next;
+#X text 135 10 Rand;
+#X text 181 10 Goto;
+#X text 229 10 Reset;
+#X obj 40 173 r kill;
+#X obj 68 407 r helios-control;
+#X text 5 214 Play;
+#X msg 98 197 1000 \$1;
+#X obj 97 220 /;
+#X floatatom 99 173 5 0 0 0 - - - 0;
+#X text 141 172 FPS;
+#X obj 45 458 helios-status;
 #X connect 0 0 32 0;
 #X connect 1 0 3 0;
 #X connect 2 0 7 0;
@@ -487,4 +487,4 @@
 #X connect 28 0 29 0;
 #X connect 29 0 7 1;
 #X connect 30 0 28 0;
-#X coords 0 262 0.5 261.5 85 60 0;
+#X coords 0 264.25 0.5 263.75 85 60 0;
