@@ -1,4 +1,4 @@
-#N canvas 2723 260 684 1057 12;
+#N canvas 3107 42 684 1057 12;
 #X obj 45 433 helios 30000;
 #X floatatom 44 307 5 0 0 0 - - - 0;
 #X obj 42 211 tgl 24 0 empty empty empty 17 7 0 10 #fcfcfc #000000
@@ -6,7 +6,7 @@
 #X obj 45 341 text get ildafile;
 #X obj 88 36 bng 24 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#N canvas 2046 1162 498 473 frame-counter 1;
+#N canvas 2046 1162 498 473 frame-counter 0;
 #X obj 71 112 + 1;
 #X obj 14 112 float 0;
 #X obj 13 179 outlet;
@@ -240,7 +240,7 @@
 #X obj 205 91 / 5;
 #X text 246 116 points in frame;
 #X obj 207 143 change;
-#N canvas 2373 566 544 1015 scale-xyrgb 0;
+#N canvas 2103 784 544 1015 scale-xyrgb 0;
 #X obj 16 10 inlet;
 #X obj 16 94 float 0;
 #X obj 16 66 until;
@@ -329,7 +329,7 @@
 #X connect 9 0 8 2;
 #X restore 157 492 pd work-in-progress;
 #X obj 44 248 metro 50;
-#X msg 41 142 XYRGB/BEAMIN.ild.xyrgb;
+#X msg 41 142 XYRGB/Dancer.ild.xyrgb;
 #X obj 40 36 bng 24 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
 #X floatatom 112 307 5 0 0 0 - - - 0;
@@ -341,7 +341,7 @@
 #X obj 136 36 bng 24 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
 #X obj 40 113 t a b, f 28;
-#N canvas 1161 262 993 628 ilda-library 1;
+#N canvas 760 550 993 628 ilda-library 0;
 #X obj 183 278 text define ildafile;
 #X msg 267 247 clear;
 #X msg 183 246 read -c \$1;
@@ -355,7 +355,7 @@
 #X text 8 277 filename;
 #X text 97 277 num frames;
 #X msg 18 209 set \$1;
-#N canvas 1171 1009 774 547 counter 1;
+#N canvas 1171 1009 774 547 counter 0;
 #X obj 80 146 + 1;
 #X obj 18 145 float 0;
 #X obj 78 234 outlet;

@@ -1,253 +1,329 @@
-#N canvas 2238 310 332 714 12;
-#N canvas 791 200 2221 1768 UI 1;
-#X floatatom 186 63 5 1 65 0 - - - 24;
-#X msg 498 147 pps \$1;
-#X obj 313 806 r \$0-out;
-#X obj 438 829 s \$0-out;
-#X floatatom 186 234 7 0 0 0 - - - 16;
-#X text 20 235 Intensity;
-#X msg 512 239 intensity \$1;
-#X floatatom 186 320 7 0 0 0 - - - 16;
-#X floatatom 186 353 7 0 0 0 - - - 16;
-#X floatatom 186 386 7 0 0 0 - - - 16;
-#X obj 186 287 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#N canvas 1863 221 334 942 12;
+#N canvas 1583 317 685 1108 UI 1;
+#X obj 424 838 r \$0-out;
+#X msg 456 333 0;
+#X obj 455 360 s kill;
+#X obj 457 227 key;
+#X obj 456 277 sel 27;
+#X obj 497 199 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X text 20 320 Max angle;
-#X msg 506 342 maxangle \$1;
-#X text 20 353 Subdivide;
-#X msg 506 385 subdivide \$1;
-#X text 20 386 Dwell points;
-#X msg 506 424 blanknum \$1;
-#X text 20 287 Optimize;
-#X obj 506 284 expr 1 - $i1;
-#X text 20 505 Single mode;
-#X obj 186 505 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X msg 507 572 singlemode \$1;
-#X obj 186 538 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X obj 186 571 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X msg 503 722 maxstatuspoll \$1;
-#X text 20 571 Don't block;
-#X msg 502 607 startimmediately \$1;
-#X msg 504 671 dontblock \$1;
-#X msg 407 99 255;
-#X msg 410 220 1;
-#X msg 410 289 15;
-#X msg 408 324 15;
-#X msg 410 360 8;
-#X msg 402 487 0;
-#X msg 401 523 0;
-#X msg 405 550 0;
-#X msg 404 574 512;
-#X floatatom 186 604 7 0 0 0 - - - 16;
-#X msg 146 804 0;
-#X obj 145 831 s kill;
-#X obj 147 698 key;
-#X obj 146 748 sel 27;
-#X obj 186 638 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X obj 147 723 spigot;
-#X msg 408 613 1;
-#X obj 146 775 t b b, f 8;
-#X msg 200 805 0 0 0 0 0;
-#X text 662 774 Killswitch - Esc key centers the galvos \, turns off
-the beam \, then disables the DAC.;
-#X obj 200 831 s \$0-out;
-#X obj 186 18 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X text 20 19 Enable DAC;
-#X msg 403 21 0;
-#X obj 499 88 s \$0-out;
-#X obj 468 36 t b b;
-#X msg 499 63 0 0 0 0 0;
-#X obj 467 9 loadbang;
-#X msg 316 114 10, f 2;
-#X msg 341 114 12, f 2;
-#X msg 366 114 15, f 2;
-#X msg 316 136 20, f 2;
-#X msg 341 136 25, f 2;
-#X msg 366 136 30, f 2;
-#X msg 316 158 35, f 2;
-#X msg 341 158 40, f 2;
-#X msg 366 158 45, f 2;
-#X obj 186 107 bng 15 250 50 0 empty empty 10 17 7 0 10 #fcfcfc #000000
+#X obj 457 252 spigot;
+#X msg 499 148 1;
+#X obj 456 304 t b b, f 8;
+#X msg 510 334 0 0 0 0 0;
+#X obj 510 360 s \$0-out;
+#X obj 529 155 s \$0-out;
+#X obj 498 103 t b b;
+#X msg 529 130 0 0 0 0 0;
+#X obj 497 76 loadbang;
+#X text 331 199 ESC key killswitch;
+#X obj 424 865 s helios-control;
+#N canvas 485 673 1008 679 timing-control 0;
+#X floatatom 190 17 5 1 65 0 - - - 24;
+#X msg 327 75 10, f 2;
+#X msg 352 75 12, f 2;
+#X msg 377 75 15, f 2;
+#X msg 327 97 20, f 2;
+#X msg 352 97 25, f 2;
+#X msg 377 97 30, f 2;
+#X msg 327 119 35, f 2;
+#X msg 352 119 40, f 2;
+#X msg 377 119 45, f 2;
+#X obj 165 61 bng 15 250 50 0 empty empty 10 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 221 107 bng 15 250 50 0 empty empty 12 17 7 0 10 #fcfcfc #000000
+#X obj 200 61 bng 15 250 50 0 empty empty 12 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 256 107 bng 15 250 50 0 empty empty 15 17 7 0 10 #fcfcfc #000000
+#X obj 235 61 bng 15 250 50 0 empty empty 15 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 186 124 bng 15 250 50 0 empty empty 20 17 7 0 10 #fcfcfc #000000
+#X obj 165 78 bng 15 250 50 0 empty empty 20 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 221 124 bng 15 250 50 0 empty empty 25 17 7 0 10 #fcfcfc #000000
+#X obj 200 78 bng 15 250 50 0 empty empty 25 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 256 124 bng 15 250 50 0 empty empty 30 17 7 0 10 #fcfcfc #000000
+#X obj 235 78 bng 15 250 50 0 empty empty 30 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 186 141 bng 15 250 50 0 empty empty 35 17 7 0 10 #fcfcfc #000000
+#X obj 165 95 bng 15 250 50 0 empty empty 35 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 221 141 bng 15 250 50 0 empty empty 40 17 7 0 10 #fcfcfc #000000
+#X obj 200 95 bng 15 250 50 0 empty empty 40 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 256 141 bng 15 250 50 0 empty empty 45 17 7 0 10 #fcfcfc #000000
+#X obj 235 95 bng 15 250 50 0 empty empty 45 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 186 158 bng 15 250 50 0 empty empty 50 17 7 0 10 #fcfcfc #000000
+#X obj 165 112 bng 15 250 50 0 empty empty 50 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 221 158 bng 15 250 50 0 empty empty 55 17 7 0 10 #fcfcfc #000000
+#X obj 200 112 bng 15 250 50 0 empty empty 55 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 256 158 bng 15 250 50 0 empty empty 60 17 7 0 10 #fcfcfc #000000
+#X obj 235 112 bng 15 250 50 0 empty empty 60 17 7 0 10 #fcfcfc #000000
 #000000;
-#X msg 317 180 50, f 2;
-#X msg 342 180 55, f 2;
-#X msg 367 180 60, f 2;
-#X obj 336 204 + 0;
-#X obj 499 124 * 1000;
-#X text 20 66 KPPS;
-#X text 20 638 ESC key killswitch;
-#X text 20 604 Max status poll;
-#X text 20 538 Start Immediately;
-#X obj 313 833 s helios-control;
-#X msg 506 312 rawmode \$1;
-#X msg 405 58 20;
-#X obj 186 439 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X obj 186 472 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X msg 402 421 0;
-#X msg 401 457 0;
-#X text 20 439 Flip X;
-#X text 20 472 Flip Y;
-#X msg 507 505 flipx \$1;
-#X msg 507 539 flipy \$1;
-#X floatatom 186 201 7 0 0 0 - - - 16;
-#X msg 510 208 scale \$1;
-#X msg 403 163 100;
-#X obj 510 181 / 100;
-#X text 20 202 Scale %;
-#X text 645 236 intensity: Scale RGB values. Range 0 - 255 \, default=255
-;
-#X text 644 296 rawmode: Disable optimisation - maxangle \, subdivide
-\, blanknum are ignored - default 0, f 43;
-#X text 647 333 maxangle: Set the max angle for a corner before inserting
-points. Range 0 - 180 \, default 15 degrees, f 44;
-#X text 647 387 subdivide: Set the subdivision length for straight
-lines. Default 15, f 43;
-#X text 642 426 blanknum: Set the number of dwell points to insert
-at corners - Default 8, f 44;
-#X text 662 561 singlemode: Dont repeat frame if a new frame has not
-been received. Default 0, f 42;
-#X text 657 671 dontblock: Don't let WriteFrame() block execution while
-waiting for the transfer to finish, f 41;
-#X text 660 598 startimmediately: Start output immediately \, instead
-of waiting for current frame (if there is one) to finish playing.,
-f 41;
-#X text 661 723 maxstatuspoll: Set the maximum number of times to poll
-the DAC ready status before sending the frame - default 512, f 43
-;
-#X text 644 140 pps: Points per second. Range 10 - 65535 \, default=20000
-, f 43;
-#X text 647 198 scale: Scale points. 1.0=original size.;
-#X text 652 20 TODO
- - XY offset
- - tangent error correction
- - check
-for null list on DAC enable to prevent crash
- - separate RGB intensity
-;
-#X connect 0 0 81 0;
-#X connect 1 0 3 0;
-#X connect 2 0 86 0;
-#X connect 4 0 6 0;
-#X connect 6 0 3 0;
-#X connect 7 0 12 0;
-#X connect 8 0 14 0;
-#X connect 9 0 16 0;
-#X connect 10 0 18 0;
+#X msg 328 141 50, f 2;
+#X msg 353 141 55, f 2;
+#X msg 378 141 60, f 2;
+#X obj 347 165 + 0;
+#X text 14 20 KPPS;
+#X msg 330 31 20;
+#X msg 166 197 pps \$1;
+#X obj 167 174 * 1000;
+#X text 4 0 TIMING;
+#X obj 168 236 s \$0-out;
+#X obj 332 6 loadbang;
+#X connect 0 0 29 0;
+#X connect 1 0 25 0;
+#X connect 2 0 25 0;
+#X connect 3 0 25 0;
+#X connect 4 0 25 0;
+#X connect 5 0 25 0;
+#X connect 6 0 25 0;
+#X connect 7 0 25 0;
+#X connect 8 0 25 0;
+#X connect 9 0 25 0;
+#X connect 10 0 1 0;
+#X connect 11 0 2 0;
 #X connect 12 0 3 0;
-#X connect 14 0 3 0;
-#X connect 16 0 3 0;
-#X connect 18 0 87 0;
-#X connect 20 0 21 0;
-#X connect 21 0 3 0;
-#X connect 22 0 26 0;
-#X connect 23 0 27 0;
-#X connect 24 0 3 0;
-#X connect 26 0 3 0;
-#X connect 27 0 3 0;
-#X connect 28 0 4 0;
-#X connect 29 0 10 0;
-#X connect 30 0 7 0;
-#X connect 31 0 8 0;
-#X connect 32 0 9 0;
-#X connect 33 0 20 0;
-#X connect 34 0 22 0;
-#X connect 35 0 23 0;
-#X connect 36 0 37 0;
-#X connect 37 0 24 0;
-#X connect 38 0 39 0;
-#X connect 40 0 43 0;
-#X connect 41 0 45 0;
-#X connect 42 0 43 1;
-#X connect 43 0 41 0;
-#X connect 44 0 42 0;
-#X connect 45 0 38 0;
-#X connect 45 1 46 0;
-#X connect 46 0 48 0;
-#X connect 49 0 52 0;
-#X connect 51 0 49 0;
-#X connect 53 0 88 0;
-#X connect 53 0 28 0;
-#X connect 53 0 29 0;
-#X connect 53 0 30 0;
-#X connect 53 0 31 0;
-#X connect 53 0 32 0;
-#X connect 53 0 33 0;
-#X connect 53 0 34 0;
-#X connect 53 0 35 0;
-#X connect 53 0 36 0;
-#X connect 53 0 44 0;
-#X connect 53 0 51 0;
-#X connect 53 0 99 0;
-#X connect 53 1 54 0;
-#X connect 54 0 52 0;
-#X connect 55 0 53 0;
-#X connect 56 0 80 0;
-#X connect 57 0 80 0;
-#X connect 58 0 80 0;
-#X connect 59 0 80 0;
-#X connect 60 0 80 0;
-#X connect 61 0 80 0;
-#X connect 62 0 80 0;
-#X connect 63 0 80 0;
-#X connect 64 0 80 0;
-#X connect 65 0 56 0;
-#X connect 66 0 57 0;
-#X connect 67 0 58 0;
-#X connect 68 0 59 0;
-#X connect 69 0 60 0;
-#X connect 70 0 61 0;
-#X connect 71 0 62 0;
-#X connect 72 0 63 0;
-#X connect 73 0 64 0;
-#X connect 74 0 77 0;
-#X connect 75 0 78 0;
-#X connect 76 0 79 0;
-#X connect 77 0 80 0;
-#X connect 78 0 80 0;
-#X connect 79 0 80 0;
-#X connect 80 0 0 0;
-#X connect 81 0 1 0;
-#X connect 87 0 3 0;
-#X connect 88 0 0 0;
-#X connect 89 0 95 0;
-#X connect 90 0 96 0;
-#X connect 91 0 89 0;
-#X connect 92 0 90 0;
-#X connect 95 0 3 0;
-#X connect 96 0 3 0;
-#X connect 97 0 100 0;
-#X connect 98 0 3 0;
-#X connect 99 0 97 0;
-#X connect 100 0 98 0;
-#X coords 0 -1 1 1 300 680 2 0 0;
-#X restore 9 13 pd UI;
-#X coords 0 714 1 713 85 60 0;
+#X connect 13 0 4 0;
+#X connect 14 0 5 0;
+#X connect 15 0 6 0;
+#X connect 16 0 7 0;
+#X connect 17 0 8 0;
+#X connect 18 0 9 0;
+#X connect 19 0 22 0;
+#X connect 20 0 23 0;
+#X connect 21 0 24 0;
+#X connect 22 0 25 0;
+#X connect 23 0 25 0;
+#X connect 24 0 25 0;
+#X connect 25 0 0 0;
+#X connect 27 0 0 0;
+#X connect 28 0 31 0;
+#X connect 29 0 28 0;
+#X connect 32 0 27 0;
+#X coords 0 -1 1 1 280 140 2 0 0;
+#X restore 10 86 pd timing-control;
+#N canvas 2047 664 714 399 geometry-control 0;
+#X floatatom 186 31 7 0 0 0 - - - 16;
+#X msg 510 38 scale \$1;
+#X obj 510 11 / 100;
+#X text 20 32 Scale %;
+#X floatatom 186 64 7 0 0 0 - - - 16;
+#X floatatom 186 97 7 0 0 0 - - - 16;
+#X text 20 66 Offset X;
+#X text 20 100 Offset Y;
+#X msg 363 80 0;
+#X msg 364 111 0;
+#X msg 509 83 offsetx \$1;
+#X msg 511 115 offsety \$1;
+#X obj 186 130 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 186 163 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 359 158 0;
+#X text 20 130 Flip X;
+#X text 20 163 Flip Y;
+#X msg 507 210 flipx \$1;
+#X msg 507 244 flipy \$1;
+#X msg 358 194 1;
+#X text 3 0 GEOMETRY;
+#X obj 315 5 loadbang;
+#X obj 453 286 s \$0-out;
+#X msg 355 39 100;
+#X connect 0 0 2 0;
+#X connect 1 0 22 0;
+#X connect 2 0 1 0;
+#X connect 4 0 10 0;
+#X connect 5 0 11 0;
+#X connect 8 0 4 0;
+#X connect 9 0 5 0;
+#X connect 10 0 22 0;
+#X connect 11 0 22 0;
+#X connect 12 0 17 0;
+#X connect 13 0 18 0;
+#X connect 14 0 12 0;
+#X connect 17 0 22 0;
+#X connect 18 0 22 0;
+#X connect 19 0 13 0;
+#X connect 21 0 8 0;
+#X connect 21 0 9 0;
+#X connect 21 0 14 0;
+#X connect 21 0 19 0;
+#X connect 21 0 23 0;
+#X connect 23 0 0 0;
+#X coords 0 -1 1 1 280 200 2 0 0;
+#X restore 10 236 pd geometry-control;
+#N canvas 581 443 1126 437 color-control 0;
+#X floatatom 175 25 7 0 255 0 - - - 16;
+#X text 9 26 Intensity;
+#X msg 324 89 intensity \$1;
+#X msg 338 27 255;
+#X obj 329 3 loadbang;
+#X obj 296 176 s \$0-out;
+#X text 4 0 COLOR;
+#X floatatom 176 58 7 0 255 0 - - - 16;
+#X text 10 59 TTL Threshold;
+#X msg 322 126 ttlthreshold \$1;
+#X msg 334 55 128;
+#X connect 0 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 4 0 10 0;
+#X connect 7 0 9 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X coords 0 -1 1 1 280 90 2 0 0;
+#X restore 10 446 pd color-control;
+#N canvas 2282 562 1172 855 optimize-control 0;
+#X floatatom 185 65 7 0 0 0 - - - 16;
+#X floatatom 185 98 7 0 0 0 - - - 16;
+#X floatatom 185 131 7 0 0 0 - - - 16;
+#X obj 185 32 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X text 19 65 Max angle;
+#X msg 140 270 maxangle \$1;
+#X text 19 98 Subdivide;
+#X msg 140 313 subdivide \$1;
+#X text 19 131 Dwell points;
+#X msg 140 352 blanknum \$1;
+#X obj 140 212 expr 1 - $i1;
+#X msg 307 35 1;
+#X msg 308 66 15;
+#X msg 306 101 15;
+#X msg 308 137 8;
+#X msg 140 240 rawmode \$1;
+#X obj 292 1 loadbang;
+#X obj 116 382 s \$0-out;
+#X text 19 32 Enable;
+#X text 4 0 OPTIMIZE;
+#X connect 0 0 5 0;
+#X connect 1 0 7 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 5 0 17 0;
+#X connect 7 0 17 0;
+#X connect 9 0 17 0;
+#X connect 10 0 15 0;
+#X connect 11 0 3 0;
+#X connect 12 0 0 0;
+#X connect 13 0 1 0;
+#X connect 14 0 2 0;
+#X connect 15 0 17 0;
+#X connect 16 0 11 0;
+#X connect 16 0 12 0;
+#X connect 16 0 13 0;
+#X connect 16 0 14 0;
+#X coords 0 -1 1 1 280 160 2 0 0;
+#X restore 10 546 pd optimize-control;
+#N canvas 2602 919 1217 837 heliosflags-control 0;
+#X obj 260 359 s \$0-out;
+#X text 16 32 Single mode;
+#X obj 182 32 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 329 182 singlemode \$1;
+#X obj 182 65 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 182 98 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 325 332 maxstatuspoll \$1;
+#X text 16 98 Don't block;
+#X msg 324 217 startimmediately \$1;
+#X msg 326 281 dontblock \$1;
+#X msg 305 27 0;
+#X msg 304 63 0;
+#X msg 308 90 0;
+#X msg 307 114 512;
+#X floatatom 182 131 7 0 0 0 - - - 16;
+#X text 16 131 Max status poll;
+#X text 16 65 Start Immediately;
+#X obj 413 28 loadbang;
+#X text 3 0 HELIOS FLAGS;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 4 0 8 0;
+#X connect 5 0 9 0;
+#X connect 6 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X connect 10 0 2 0;
+#X connect 11 0 4 0;
+#X connect 12 0 5 0;
+#X connect 13 0 14 0;
+#X connect 14 0 6 0;
+#X connect 17 0 10 0;
+#X connect 17 0 11 0;
+#X connect 17 0 12 0;
+#X connect 17 0 13 0;
+#X coords 0 -1 1 1 280 170 2 0 0;
+#X restore 10 716 pd heliosflags-control;
+#N canvas 660 453 1333 845 dac-control 0;
+#X obj 189 20 tgl 23 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 339 28 0;
+#X obj 435 95 s \$0-out;
+#X obj 404 43 t b b;
+#X msg 435 70 0 0 0 0 0;
+#X obj 403 16 loadbang;
+#X text 3 0 DAC;
+#X text 13 21 Enable;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 1 0;
+#X connect 3 1 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 3 0;
+#X coords 0 -1 1 1 280 60 2 0 0;
+#X restore 10 15 pd dac-control;
+#N canvas 1235 186 969 1733 helios-notes 0;
+#X text 44 233 intensity: Scale RGB values. Range 0 - 255 \, default=255
+;
+#X text 48 44 pps: Points per second. Range 10 - 65535 \, default=20000
+, f 43;
+#X text 45 80 scale: Scale points. 1.0=original size.;
+#X text 15 703 TODO;
+#X text 35 730 - tangent error correction;
+#X text 34 751 - check for null list on DAC enable to prevent crash
+;
+#X text 33 770 - separate RGB intensity;
+#X text 36 790 - color channel delay;
+#X text 36 810 - keystone transform;
+#X text 15 15 HELIOS MESSAGES:;
+#X text 44 404 subdivide: Set the subdivision length for straight lines.
+Range 0 - 40096 \, default=15, f 43;
+#X text 44 350 maxangle: Set the max angle for a corner before inserting
+points. Range 0 - 180 \, default=15 degrees, f 44;
+#X text 41 300 rawmode: Disable optimisation - maxangle \, subdivide
+\, blanknum are ignored. Range 0 - 1 \, default=0, f 43;
+#X text 44 185 flipx: Invert points X coordinates. Range 0 - 1 \, default=0
+;
+#X text 44 203 flipx: Invert points Y coordinates. Range 0 - 1 \, default=0
+;
+#X text 45 100 offsetx: Offset points X coordinates. Range -4096 -
+4096 \, default=0, f 39;
+#X text 45 140 offsety: Offset points Y coordinates. Range -4096 -
+4096 \, default=0, f 40;
+#X text 43 264 ttlthreshold: Color TTL ON threshold. Range 0 - 255
+\, default=0 \, 0=OFF, f 40;
+#X text 41 484 singlemode: Dont repeat frame if a new frame has not
+been received. Default=0, f 42;
+#X text 41 443 blanknum: Set the number of dwell points to insert at
+corners - Default=8, f 44;
+#X text 39 521 startimmediately: Start output immediately \, instead
+of waiting for current frame (if there is one) to finish playing. Default=0
+, f 41;
+#X text 36 594 dontblock: Don't let WriteFrame() block execution while
+waiting for the transfer to finish. Default=0, f 41;
+#X text 35 645 maxstatuspoll: Set the maximum number of times to poll
+the DAC ready status before sending the frame. Default=512, f 43;
+#X restore 335 21 pd helios-notes;
+#X connect 0 0 16 0;
+#X connect 1 0 2 0;
+#X connect 3 0 6 0;
+#X connect 4 0 8 0;
+#X connect 5 0 6 1;
+#X connect 6 0 4 0;
+#X connect 7 0 5 0;
+#X connect 8 0 1 0;
+#X connect 8 1 9 0;
+#X connect 9 0 10 0;
+#X connect 12 0 7 0;
+#X connect 12 1 13 0;
+#X connect 13 0 11 0;
+#X connect 14 0 12 0;
+#X coords 0 -1 1 1 300 900 2 0 0;
+#X restore 9 12 pd UI;
+#X coords 0 942 1 941 85 60 0;
