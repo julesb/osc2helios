@@ -1,5 +1,5 @@
-#N canvas 354 68 914 456 12;
-#N canvas 127 68 1175 475 UI 1;
+#N canvas 175 54 903 448 12;
+#N canvas 127 68 1202 525 UI 0;
 #X obj 915 317 r \$0-out;
 #X msg 922 255 0;
 #X obj 921 282 s kill;
@@ -17,19 +17,19 @@
 #X obj 959 25 loadbang;
 #X text 987 163 ESC key killswitch;
 #X obj 915 344 s helios-control;
-#N canvas 68 521 687 413 geometry-control 0;
+#N canvas 588 362 687 413 geometry-control 0;
 #X floatatom 160 31 6 0 0 0 - - -;
 #X msg 418 91 scale \$1;
 #X obj 418 64 / 100;
 #X floatatom 160 60 6 0 0 0 - - -;
 #X floatatom 220 60 6 0 0 0 - - -;
-#X msg 352 120 0;
-#X msg 353 151 0;
+#X msg 347 107 0;
+#X msg 384 108 0;
 #X msg 424 190 offsetx \$1;
 #X msg 511 187 offsety \$1;
-#X obj 160 89 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 160 118 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 220 89 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 220 118 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 352 183 0;
 #X msg 425 229 flipx \$1;
@@ -37,15 +37,19 @@
 #X msg 351 219 1;
 #X obj 402 363 s \$0-out;
 #X obj 315 5 r \$0-helios-init;
-#X msg 351 82 25;
+#X msg 350 77 25;
 #X text 20 62 Offset;
-#X text 20 89 Flip;
+#X text 20 118 Flip;
 #X text 3 0 BASIC TRANSFORM;
 #X obj 315 41 t b;
-#X obj 160 122 bng 23 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 160 151 bng 23 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 20 122 Reset;
+#X text 20 151 Reset;
 #X text 20 32 Scale;
+#X floatatom 160 89 6 0 0 0 - - -;
+#X text 20 90 Rotation;
+#X msg 347 146 0;
+#X msg 425 142 rotation \$1;
 #X connect 0 0 2 0;
 #X connect 1 0 15 0;
 #X connect 2 0 1 0;
@@ -68,8 +72,12 @@
 #X connect 21 0 11 0;
 #X connect 21 0 14 0;
 #X connect 21 0 17 0;
+#X connect 21 0 27 0;
 #X connect 22 0 21 0;
-#X coords 0 -1 1 1 280 160 2 0 0;
+#X connect 25 0 28 0;
+#X connect 27 0 25 0;
+#X connect 28 0 15 0;
+#X coords 0 -1 1 1 280 190 2 0 0;
 #X restore 301 11 pd geometry-control;
 #N canvas 848 488 501 473 color-control 0;
 #X floatatom 185 25 7 0 255 0 - - -;
@@ -152,8 +160,8 @@
 #X connect 19 0 10 0;
 #X connect 20 0 6 0;
 #X coords 0 -1 1 1 280 160 2 0 0;
-#X restore 591 191 pd color-control;
-#N canvas 2282 562 1172 855 optimize-control 0;
+#X restore 591 11 pd color-control;
+#N canvas 741 412 601 447 optimize-control 0;
 #X floatatom 185 65 7 0 180 0 - - -;
 #X floatatom 185 98 7 0 0 0 - - -;
 #X floatatom 185 131 7 0 0 0 - - -;
@@ -166,15 +174,19 @@
 #X text 19 131 Dwell points;
 #X msg 140 352 blanknum \$1;
 #X obj 140 212 expr 1 - $i1;
-#X msg 307 35 1;
-#X msg 308 66 15;
-#X msg 306 101 15;
-#X msg 308 137 8;
+#X msg 322 96 1;
+#X msg 323 127 15;
+#X msg 321 162 15;
+#X msg 323 198 8;
 #X msg 140 240 rawmode \$1;
 #X obj 116 382 s \$0-out;
 #X text 19 32 Enable;
 #X text 4 0 OPTIMIZE;
 #X obj 292 1 r \$0-helios-init;
+#X obj 185 160 bng 23 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 20 161 Reset;
+#X obj 296 45 t b;
 #X connect 0 0 5 0;
 #X connect 1 0 7 0;
 #X connect 2 0 9 0;
@@ -188,14 +200,16 @@
 #X connect 13 0 1 0;
 #X connect 14 0 2 0;
 #X connect 15 0 16 0;
-#X connect 19 0 11 0;
-#X connect 19 0 12 0;
-#X connect 19 0 13 0;
-#X connect 19 0 14 0;
-#X coords 0 -1 1 1 280 170 2 0 0;
-#X restore 591 11 pd optimize-control;
+#X connect 19 0 22 0;
+#X connect 20 0 22 0;
+#X connect 22 0 11 0;
+#X connect 22 0 12 0;
+#X connect 22 0 13 0;
+#X connect 22 0 14 0;
+#X coords 0 -1 1 1 280 200 2 0 0;
+#X restore 301 211 pd optimize-control;
 #N canvas 948 497 695 625 dac-control 0;
-#X obj 189 20 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 189 20 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 301 28 0;
 #X obj 283 518 s \$0-out;
@@ -371,7 +385,7 @@ the DAC ready status before sending the frame. Default=512, f 43;
 #X restore 935 383 pd helios-notes;
 #X obj 1011 136 s \$0-helios-init;
 #X obj 960 52 t b b b, f 15;
-#N canvas 550 187 793 518 geocorrection 1;
+#N canvas 550 187 793 518 geocorrection 0;
 #X floatatom 160 117 6 0 0 0 - - -;
 #X floatatom 220 117 6 0 0 0 - - -;
 #X floatatom 160 146 6 0 0 0 - - -;
@@ -496,7 +510,7 @@ the DAC ready status before sending the frame. Default=512, f 43;
 #X connect 58 0 48 0;
 #X connect 59 0 9 0;
 #X coords 0 -1 1 1 280 240 2 0 0;
-#X restore 301 181 pd geocorrection;
+#X restore 591 182 pd geocorrection;
 #X connect 0 0 15 0;
 #X connect 1 0 2 0;
 #X connect 3 0 6 0;
@@ -513,5 +527,5 @@ the DAC ready status before sending the frame. Default=512, f 43;
 #X connect 22 1 21 0;
 #X connect 22 2 12 0;
 #X coords 0 -1 1 1 880 430 2 0 0;
-#X restore 17 11 pd UI;
-#X coords 0 456 1 455 85 60 0;
+#X restore 12 9 pd UI;
+#X coords 0 448 1 447 85 60 0;
