@@ -1,5 +1,5 @@
-#N canvas 47 69 913 451 12;
-#N canvas 127 68 1202 525 UI 0;
+#N canvas 3 54 913 451 12;
+#N canvas 127 68 1202 525 UI 1;
 #X obj 915 317 r \$0-out;
 #X msg 922 255 0;
 #X obj 921 282 s kill;
@@ -165,7 +165,7 @@
 #X floatatom 185 65 7 0 180 0 - - -;
 #X floatatom 185 98 7 0 0 0 - - -;
 #X floatatom 185 131 7 0 0 0 - - -;
-#X obj 185 32 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 185 32 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X text 19 65 Max angle;
 #X msg 140 270 maxangle \$1;
@@ -208,11 +208,11 @@
 #X connect 22 0 14 0;
 #X coords 0 -1 1 1 280 200 2 0 0;
 #X restore 301 211 pd optimize-control;
-#N canvas 948 497 695 625 dac-control 0;
+#N canvas 953 407 695 625 dac-control 1;
 #X obj 189 20 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 301 28 0;
-#X obj 283 518 s \$0-out;
+#X obj 280 544 s \$0-out;
 #X obj 400 45 t b b;
 #X msg 431 72 0 0 0 0 0;
 #X text 3 0 DAC;
@@ -284,6 +284,10 @@
 #X floatatom 189 300 7 0 0 0 - - -;
 #X text 13 300 Max status poll;
 #X text 13 234 Start Immediately;
+#X obj 189 329 bng 23 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 13 330 Dump frame;
+#X msg 388 501 dumpframe 1;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
 #X connect 3 0 1 0;
@@ -337,6 +341,8 @@
 #X connect 52 0 46 0;
 #X connect 53 0 54 0;
 #X connect 54 0 47 0;
+#X connect 57 0 59 0;
+#X connect 59 0 2 0;
 #X coords 0 -1 1 1 280 380 2 0 0;
 #X restore 11 11 pd dac-control;
 #N canvas 1235 186 969 1733 helios-notes 0;
