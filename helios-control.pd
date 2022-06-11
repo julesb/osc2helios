@@ -1,5 +1,5 @@
-#N canvas 130 54 844 508 12;
-#N canvas 234 77 1152 629 UI 1;
+#N canvas 15 60 844 508 12;
+#N canvas 234 77 1152 629 UI 0;
 #X obj 915 342 r \$0-out;
 #X obj 1018 107 s \$0-out;
 #X msg 1018 82 0 0 0 0 0;
@@ -25,18 +25,18 @@
 #X obj 402 363 s \$0-out;
 #X obj 315 5 r \$0-helios-init;
 #X msg 350 77 25;
-#X text 20 62 Offset;
 #X text 20 118 Flip;
-#X text 3 0 BASIC TRANSFORM;
 #X obj 315 41 t b;
 #X obj 140 151 bng 23 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X text 20 151 Reset;
 #X text 20 32 Scale;
 #X floatatom 140 89 6 0 0 0 - - -;
-#X text 20 90 Rotation;
 #X msg 347 146 0;
 #X msg 425 142 rotation \$1;
+#X text 3 0 TRANSFORM;
+#X text 20 62 Translate;
+#X text 20 90 Rotate;
 #X connect 0 0 2 0;
 #X connect 1 0 15 0;
 #X connect 2 0 1 0;
@@ -52,21 +52,21 @@
 #X connect 12 0 15 0;
 #X connect 13 0 15 0;
 #X connect 14 0 10 0;
-#X connect 16 0 21 0;
+#X connect 16 0 19 0;
 #X connect 17 0 0 0;
-#X connect 21 0 5 0;
-#X connect 21 0 6 0;
-#X connect 21 0 11 0;
-#X connect 21 0 14 0;
-#X connect 21 0 17 0;
-#X connect 21 0 27 0;
-#X connect 22 0 21 0;
-#X connect 25 0 28 0;
-#X connect 27 0 25 0;
-#X connect 28 0 15 0;
+#X connect 19 0 5 0;
+#X connect 19 0 6 0;
+#X connect 19 0 11 0;
+#X connect 19 0 14 0;
+#X connect 19 0 17 0;
+#X connect 19 0 24 0;
+#X connect 20 0 19 0;
+#X connect 23 0 25 0;
+#X connect 24 0 23 0;
+#X connect 25 0 15 0;
 #X coords 0 -1 1 1 260 190 2 0 0;
 #X restore 281 11 pd geometry-control;
-#N canvas 485 360 646 519 color-control 1;
+#N canvas 485 360 646 519 color-control 0;
 #X floatatom 185 25 7 0 255 0 - - -;
 #X text 19 26 Intensity;
 #X msg 467 61 intensity \$1;
@@ -87,7 +87,7 @@
 -1;
 #X obj 163 124 bng 23 250 50 0 empty empty -1 4 12 0 10 -262144 -1
 -1;
-#N canvas 229 158 327 274 stepper 1;
+#N canvas 229 158 327 274 stepper 0;
 #X obj 80 146 + 1;
 #X obj 18 145 float 0;
 #X obj 79 193 outlet;
@@ -130,7 +130,7 @@
 1;
 #X obj 222 183 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#N canvas 0 54 453 312 remap-red 1;
+#N canvas 0 54 453 312 remap-red 0;
 #X obj 31 55 route 1 0;
 #X obj 83 173 t b f;
 #X obj 31 112 v rmap;
@@ -208,7 +208,7 @@
 #X restore 475 177 pd remap-red;
 #X obj 172 208 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 197 208 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 197 208 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 222 208 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -448,7 +448,7 @@
 #X floatatom 185 65 7 0 180 0 - - -;
 #X floatatom 185 98 7 0 0 0 - - -;
 #X floatatom 185 131 7 0 0 0 - - -;
-#X obj 185 32 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 185 32 tgl 23 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X text 19 65 Max angle;
 #X msg 140 270 maxangle \$1;
@@ -566,7 +566,6 @@
 #X msg 306 286 512;
 #X floatatom 189 290 7 0 0 0 - - -;
 #X text 13 290 Max status poll;
-#X text 13 224 Start Immediately;
 #X obj 190 352 bng 23 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X text 14 353 Dump frame;
@@ -586,6 +585,7 @@
 #X text 13 320 ESC key killswitch;
 #X msg 310 360 1;
 #X obj 565 561 s helios-control;
+#X text 13 224 Start immediately;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
 #X connect 3 0 1 0;
@@ -593,7 +593,7 @@
 #X connect 3 0 51 0;
 #X connect 3 0 53 0;
 #X connect 3 0 52 0;
-#X connect 3 0 72 0;
+#X connect 3 0 71 0;
 #X connect 3 1 4 0;
 #X connect 4 0 2 0;
 #X connect 8 0 9 0;
@@ -640,19 +640,19 @@
 #X connect 52 0 46 0;
 #X connect 53 0 54 0;
 #X connect 54 0 47 0;
-#X connect 57 0 59 0;
-#X connect 59 0 2 0;
-#X connect 60 0 0 0;
-#X connect 61 0 73 0;
-#X connect 62 0 63 0;
+#X connect 56 0 58 0;
+#X connect 58 0 2 0;
+#X connect 59 0 0 0;
+#X connect 60 0 72 0;
+#X connect 61 0 62 0;
+#X connect 63 0 66 0;
 #X connect 64 0 67 0;
-#X connect 65 0 68 0;
-#X connect 66 0 67 1;
-#X connect 67 0 65 0;
-#X connect 68 0 62 0;
-#X connect 68 1 69 0;
-#X connect 69 0 70 0;
-#X connect 72 0 66 0;
+#X connect 65 0 66 1;
+#X connect 66 0 64 0;
+#X connect 67 0 61 0;
+#X connect 67 1 68 0;
+#X connect 68 0 69 0;
+#X connect 71 0 65 0;
 #X coords 0 -1 1 1 260 390 2 0 0;
 #X restore 11 11 pd dac-control;
 #N canvas 431 54 969 824 helios-notes 0;
