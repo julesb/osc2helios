@@ -8,9 +8,23 @@ function ca:initialize(sel, atoms)
     self.cells1 = {}
     self.ncells = 64
     self.rule = 90 
+    self.iters = 0
     self:init(self.ncells)
     return true
 end
+
+function ca:init(numcells)
+    self.ncells = numcells
+    self.cells0={}
+    self.cells1={}
+    self.iter = 0
+    for i=1,numcells do
+        self.cells0[i] = 0
+        self.cells1[i] = 0
+    end
+    self.cells0[self.ncells/2] = 1
+end
+
 
 function ca:in_1_bang()
     self:iterate()
@@ -33,18 +47,13 @@ function ca:in_2_rule(x)
     pd.post(string.format("rule: %s", self.rule))
 end
 
-function ca:init(numcells)
-    self.ncells = numcells
-    self.cells0={}
-    self.cells1={}
-    for i=1,numcells do
-        self.cells0[i] = 0
-        self.cells1[i] = 0
-        -- table.insert(self.cells0, 0)
-        -- table.insert(self.cells1, 0)
+function ca:seed(n)
+    for i=1,n do
+        idx = math.random(ncells)
+        self.cells0[idx] = 1 - cells[idx]
     end
-    self.cells0[self.ncells/2] = 1
 end
+
 
 function ca:printcells(c)
     print(table.concat(c, ""))
@@ -53,11 +62,17 @@ end
 function ca:get_nbcode(idx)
     val = 0
     if idx > 1 and idx < self.ncells then
-        val = self.cells0[idx-1] * 4 + self.cells0[idx] * 2 + self.cells0[idx+1] * 1
+        val = self.cells0[idx-1] * 4
+            + self.cells0[idx  ] * 2
+            + self.cells0[idx+1] * 1
     elseif idx == 1 then
-        val = self.cells0[self.ncells] * 4 + self.cells0[idx] * 2 + self.cells0[idx+1] * 1
+        val = self.cells0[self.ncells] * 4
+            + self.cells0[idx        ] * 2
+            + self.cells0[idx+1      ] * 1
     elseif idx == self.ncells then
-        val = self.cells0[idx-1] * 4 + self.cells0[idx] * 2 + self.cells0[1] * 1
+        val = self.cells0[idx-1] * 4
+            + self.cells0[idx  ] * 2
+            + self.cells0[1    ] * 1
     end
     return val
 end
@@ -78,7 +93,19 @@ function ca:iterate()
             self.cells1[i] = 1
         end
     end
+    self.iter = self.iter + 1
 end
+
+function ca:cellcount()
+    count = 0
+    for i=1,ncells do
+        if cells0[i] == 1 then
+            count = count + 1
+        end
+    end
+    return count
+end
+
 
 -- init()
 -- for i=1, 50 do
